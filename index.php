@@ -10,6 +10,23 @@
 
     $sql = "SELECT * FROM prodct";
     $result = $connect->query($sql);
+    $wow = "Hello";
+
+    $result_to_show = '';
+    while($row = $result->fetch_assoc()) {
+    $result_to_show .= '
+        <article class="menu-item">
+            <img src="' . $row['p_image'] . '" class="photo" alt="menu item">
+            <div class="item-info">
+                <header>
+                    <h4>' . $row['p_title'] . '</h4>
+                    <h4 class="price">' . $row['p_price'] . '</h4>
+                </header>
+                <p class="item-text">' . $row['p_detail'] . '</p>
+            </div>
+        </article>
+        ';  
+    }
 ?>
 
 <html lang="en">
@@ -33,18 +50,12 @@
         <!-- menu items -->
         <div class="section-center">
             <!-- single item -->
-            <?php while($row = $result->fetch_assoc()): ?>
-                <article class="menu-item">
-                <img src="<?=$row['p_image']?>" class="photo" alt="menu item">
-                <div class="item-info">
-                    <header>
-                        <h4><?=$row['p_title']?></h4>
-                        <h4 class="price"><?=$row['p_price']?></h4>
-                    </header>
-                    <p class="item-text"><?=$row['p_detail']?></p>
-                </div>
-            </article>
-            <?php endwhile ?>
+            <?php
+            if (!empty($result_to_show))
+                echo $result_to_show;
+            else
+                echo "Error: no data";
+            ?>
             <!-- end of single item -->
         </div>
     </section>
