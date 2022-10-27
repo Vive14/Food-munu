@@ -219,7 +219,7 @@ Menu
 .menu-item {
   display: grid;
   gap: 1rem 2rem;
-  max-width: 25rem;
+  width: 600px;
 }
 .photo {
   object-fit: cover;
