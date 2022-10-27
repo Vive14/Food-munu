@@ -1,6 +1,6 @@
 <?php 
     // Create connection
-    $connect = new mysqli('localhost', 'root', '', 'mysapa');
+    $connect = new mysqli('localhost', 'root', '', 'mySPA');
 
     // Check Connection
 
